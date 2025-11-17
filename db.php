@@ -33,6 +33,19 @@ try {
         )
     ");
 
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS likes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            video_id INTEGER NOT NULL,
+            like_type INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(user_id, video_id),
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE
+        )
+    ");
+
 } catch (PDOException $e) {
     die("Ошибка подключения к базе данных: " . $e->getMessage());
 }

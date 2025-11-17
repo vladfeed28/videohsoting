@@ -674,6 +674,10 @@ a:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.change-button{
+    text-align: right;
+}
+
 .channel-name-title {
     font-size: 2.5rem;
     color: #e60000;
@@ -720,6 +724,18 @@ a:hover {
     background-color: #c82333;
 }
 
+.btn-change-video {
+    background-color: transparent;
+    border: 1px solid #007bff; /* Синий цвет для кнопки загрузки */
+    color: #007bff;
+    margin-right: 15px; /* Отступ от кнопки Войти/Выйти */
+}
+
+.btn-change-video:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
 /* Стили для формы удаления внутри карточки */
 .video-card .delete-video-form {
     padding: 10px;
@@ -753,3 +769,91 @@ a:hover {
     flex-grow: 1; /* Позволяет ссылке занимать все доступное пространство, выталкивая форму вниз */
 }
 
+/* Добавьте в конец файла style.css */
+
+/* Стили для блока действий с видео (лайки/дизлайки) */
+.video-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Расстояние между кнопками */
+    margin-left: auto; /* Отодвигаем блок вправо */
+}
+
+.action-btn, .action-btn-disabled {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Расстояние между иконкой и текстом */
+    transition: color 0.3s ease;
+    padding: 5px; /* Небольшой отступ, чтобы легче кликать */
+}
+
+.action-btn:hover {
+    color: #e60000; /* Цвет при наведении */
+}
+
+.action-btn.liked {
+    color: #007bff; /* Синий для лайка */
+}
+
+.action-btn.liked:hover {
+    color: #0056b3;
+}
+
+.action-btn.disliked {
+    color: #dc3545; /* Красный для дизлайка */
+}
+
+.action-btn.disliked:hover {
+    color: #c82333;
+}
+
+/* Стиль для кнопок, когда пользователь не авторизован */
+.action-btn-disabled {
+    color: #6c757d; /* Серый цвет */
+    cursor: not-allowed; /* Указываем, что нельзя кликать */
+}
+
+.action-btn-disabled span {
+    font-weight: bold;
+}
+
+/* Стили для иконок */
+.fa-thumbs-up, .fa-thumbs-down {
+    font-size: 1.5rem; /* Увеличиваем размер иконок */
+}
+
+/* Иконки в деталях видео */
+.video-meta-watch .fa-user-circle,
+.video-meta-watch .fa-eye,
+.video-meta-watch .fa-calendar-alt {
+    margin-right: 8px;
+    color: #bbb;
+}
+
+/* Адаптивность для блока действий */
+@media (max-width: 768px) {
+    .video-details-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .video-meta-watch {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px; /* Отступ от блока действий */
+    }
+    .video-actions {
+        margin-left: 0; /* Убираем авто-маржин */
+        width: 100%; /* Занимаем всю ширину */
+        justify-content: center; /* Центрируем кнопки */
+        gap: 20px;
+    }
+    .action-btn, .action-btn-disabled {
+        font-size: 1rem;
+    }
+}

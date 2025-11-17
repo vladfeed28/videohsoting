@@ -1,2 +1,4 @@
 ffmpeg/
 database.db
+uploads/
+temp.php

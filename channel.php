@@ -10,6 +10,7 @@ $channel_videos = [];
 $message = '';
 $message_type = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_video_id'])) {
     if (!$is_logged_in) {
         $_SESSION['message'] = 'Необходимо авторизоваться для удаления видео.';
@@ -125,7 +126,7 @@ if (isset($_SESSION['message'])) {
             <nav class="auth-nav">
                 <?php if ($is_logged_in): ?>
                     <a href="upload.php" class="btn btn-upload">Загрузить видео</a>
-                    <span class="welcome-text">Привет, <?php echo $channel_name_session; ?>!</span>
+                    <span class="welcome-text">Привет, <a href="channel.php?id=<?php echo $user_id; ?>"><?php echo $channel_name_session; ?></a>!</span>
                     <a href="logout.php" class="btn btn-login">Выйти</a>
                 <?php else: ?>
                     <a href="login.php" class="btn btn-login">Войти</a>
@@ -161,7 +162,6 @@ if (isset($_SESSION['message'])) {
                                     <div class="video-info">
                                         <h3 class="video-title"><?php echo htmlspecialchars($video['title']); ?></h3>
                                         <p class="video-meta">
-                                            <!-- На странице канала имя канала не нужно, но оставим метаданные -->
                                             <span class="views"><?php echo htmlspecialchars($video['views']); ?> просмотров</span>
                                             <span class="upload-date"><?php echo date('d.m.Y', strtotime($video['upload_date'])); ?></span>
                                         </p>

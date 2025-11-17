@@ -4,7 +4,7 @@ require_once 'db.php';
 
 $is_logged_in = isset($_SESSION['user_id']);
 $channel_name = $is_logged_in ? htmlspecialchars($_SESSION['channel_name']) : '';
-$user_id = $_SESSION['user_id'];
+$user_id = $is_logged_in ? $_SESSION['user_id'] : '';
 
 $message = '';
 $message_type = '';
@@ -86,7 +86,6 @@ try {
                         <a href="watch.php?id=<?php echo $video['id']; ?>" class="video-card">
                             <div class="thumbnail">
                                 <img src="<?php echo htmlspecialchars($video['thumbnail_path']); ?>" alt="<?php echo htmlspecialchars($video['title']); ?>">
-                                <!-- Пока duration не получаем, но можно добавить позже -->
                                 <span class="duration"><?php echo htmlspecialchars($video['duration']); ?></span>
                             </div>
                             <div class="video-info">
